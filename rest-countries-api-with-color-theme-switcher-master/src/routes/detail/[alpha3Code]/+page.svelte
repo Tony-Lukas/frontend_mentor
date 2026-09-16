@@ -1,14 +1,18 @@
 <script lang="ts">
+    import left_arrow from "$lib/assets/arrow-left-solid-full.svg";
+
     let data = $props();
     const country = data.data;
 </script>
 
 <div class="py-10">
-    <a href="/" class="border rounded-sm shadow-2xl px-5 py-1 bg-white">Back</a>
+    <a href="/" class="flex px-4 py-2 bg-white border-gray-400  shadow rounded-md w- items-center">
+        <img src="{left_arrow}" alt="Left Arrow" class="h-5 mr-2">Back
+    </a>
 </div>
 
 <div class="grid grid-cols-2">
-    <img src="{country.flag}" alt="{country.name}">
+    <img src="{country.flag}" alt="{country.name}" class="rounded-xl">
     <div class="px-20 py-10">
         <h1 class="font-bold text-3xl my-3">{country.name}</h1>
         <div class="grid grid-cols-2 mb-3">
@@ -27,7 +31,11 @@
         </div>
         <p class="font-medium py-10">Border Countries: 
             {#each country.borders as border }
-                <span class="font-thin bg-gray-100 border border-gray-50 shadow-sm px-4 mx-1">{border}</span>
+                <a data-sveltekit-reload href="/detail/{border.alpha3Code}">
+                    <span class="font-thin bg-white border border-gray-50 shadow-sm px-4 rounded-sm inline-block m-1">{border.name}</span>
+                </a>
+            {:else}
+                no border countries. 
             {/each}
         </p>
     </div>
