@@ -5,16 +5,17 @@
     const country = data.data;
 </script>
 
-<div class="py-10">
-    <a href="/" class="flex px-4 py-2 bg-white border-gray-400  shadow rounded-md w- items-center">
+<div class="py-10 w-25">
+    <a href="/" class="flex px-4 py-2 bg-white border-gray-400  shadow rounded-md w- items-center justify-around">
         <img src="{left_arrow}" alt="Left Arrow" class="h-5 mr-2">Back
     </a>
 </div>
 
-<div class="grid grid-cols-2">
-    <img src="{country.flag}" alt="{country.name}" class="rounded-xl">
-    <div class="px-20 py-10">
-        <h1 class="font-bold text-3xl my-3">{country.name}</h1>
+<div class="grid grid-cols-2 h-1/3">
+    <img src="{country.flag}" alt="{country.name}" class="w-full object-cover rounded-xl">
+    
+    <div class="px-20">
+        <h1 class="font-bold text-3xl">{country.name}</h1>
         <div class="grid grid-cols-2 mb-3">
             <div>
                 <p class="font-medium my-2">Native Name: <span class="font-thin">{country.nativeName}</span></p>
