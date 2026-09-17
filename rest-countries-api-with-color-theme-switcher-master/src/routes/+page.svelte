@@ -1,9 +1,7 @@
 <script lang="ts">
     import search_icon from '$lib/assets/magnifying-glass-solid-full.svg';
     import dropdown from '$lib/assets/dropdown_icon.png';
-
-    import RegionDropdown from '$lib/components/RegionDropdown.svelte';
-
+    
     let {data} = $props();
 
     let countries = $state(data.countries);
