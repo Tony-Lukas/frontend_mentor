@@ -22,8 +22,7 @@
         if(keyWord){
             countries = countries.filter((country) => country.name.toLowerCase().startsWith(keyWord.toLowerCase()));
         }
-        
-        console.log(countries.length)
+        isDropDownOpen = false;
     }
 
     function handleSelectRegion(region:string){
@@ -36,8 +35,8 @@
 
 
 <div>
-    <form action="" class="flex justify-between my-10">
-        <div class="flex w-1/3 p-4 bg-white border-gray-400  shadow rounded-md items-center gap-1">
+    <form action=""  class="lg:flex justify-between my-10">
+        <div class="flex max-w-xs mb-6 p-4 bg-white border-gray-400  shadow rounded-md items-center gap-1">
             <img src="{search_icon}" alt="Search Icon" class="h-5">
             <input type="text" name="" id="" bind:value={keyWord} 
             onchange={handleOnChange} 
@@ -46,7 +45,7 @@
 
         </div>
         
-        <div class="relative w-48">
+        <div class="relative max-w-3xs">
             <button
             class="flex items-center justify-between rounded-md bg-white px-5 py-4 text-sm text-gray-700 w-full shadow-sm hover:shadow-md" 
             onclick={() => (isDropDownOpen = !isDropDownOpen)}>
@@ -67,16 +66,18 @@
         </div>
     </form>
     
-    <div class="grid grid-cols-4 gap-15">
+    <div class="lg:grid lg:grid-cols-4 gap-15 ">
         {#each countries as {flag, name,alpha3Code, population, region, capital}}
-            <a href="/detail/{alpha3Code}">
-            <div class=" bg-white rounded-md ">
-                <img src="{flag}" alt="{name}"  class="w-64 h-40 object-contain rounded-t-md shadow-md">
-                <div class="px-4 py-2 h-50">
-                    <h3 class="font-bold text-xl my-2">{name}</h3>
-                    <p class="font-medium">Population: <span class="font-extralight">{population}</span></p>
-                    <p class="font-medium">Region: <span class="font-extralight">{region}</span></p>
-                    <p class="font-medium">Capital: <span class="font-extralight">{capital}</span></p>
+            <a href="/detail/{alpha3Code}" class="flex flex-col h-full">
+            <div class=" bg-white rounded-md max-w-3xs w-full mx-auto mb-4">
+                <img src="{flag}" alt="{name}"  class="w-full h-40 object-cover rounded-t-md shadow-md">
+                <div class="p-4 flex flex-col grow">
+                    <h3 class="font-bold text-xl mb-4 truncate">{name}</h3>
+                    <ul>
+                        <li class="font-medium truncate">Region: <span class="font-extralight">{region}</span></li>
+                        <li class="font-medium truncate">Population: <span class="font-extralight">{population}</span></li>
+                        <li class="font-medium truncate">Capital: <span class="font-extralight">{capital}</span></li>
+                    </ul>
                 </div>
             </div>
             </a>
